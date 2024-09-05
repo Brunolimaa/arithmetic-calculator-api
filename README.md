@@ -1,7 +1,3 @@
-Certainly! Below is a sample `README.md` for your Spring Boot project. It includes instructions for running the project locally, information on system design, and placeholders for including the PNG file.
-
----
-
 # Arithmetic Calculator REST API
 
 ## Description
