@@ -14,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/operations")
-@CrossOrigin
 public class OperationController {
     @Autowired
     private CalculationService calculationService;
