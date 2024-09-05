@@ -85,14 +85,6 @@ Run unit tests using Maven:
 mvn test
 ```
 
-## Contributing
-
-Feel free to submit issues and pull requests. For detailed contribution guidelines, please refer to the CONTRIBUTING.md file.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgements
 
 - [Spring Boot](https://spring.io/projects/spring-boot)
