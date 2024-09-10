@@ -2,6 +2,7 @@ package com.arithmetic.calculator.security;
 
 import com.arithmetic.calculator.model.User;
 import com.arithmetic.calculator.service.UserService;
+import com.arithmetic.calculator.service.impl.UserServiceImpl;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;

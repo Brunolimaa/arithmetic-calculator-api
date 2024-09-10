@@ -1,9 +1,8 @@
 package com.arithmetic.calculator.controller;
 
 import com.arithmetic.calculator.dto.request.UserRequestDTO;
-import com.arithmetic.calculator.model.User;
-import com.arithmetic.calculator.security.JwtUtil;
 import com.arithmetic.calculator.service.AuthService;
+import com.arithmetic.calculator.service.impl.AuthServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,7 @@ public class AuthController {
 
     private final AuthService service;
 
-    public AuthController(AuthService service) {
+    public AuthController(AuthServiceImpl service) {
         this.service = service;
     }
 

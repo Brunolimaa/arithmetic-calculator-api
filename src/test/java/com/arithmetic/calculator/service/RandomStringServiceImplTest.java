@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import com.arithmetic.calculator.repository.RandomStringRepository;
+import com.arithmetic.calculator.service.impl.RandomStringServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -11,7 +12,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.web.client.RestTemplate;
 
-public class RandomStringServiceTest {
+public class RandomStringServiceImplTest {
 
     @Mock
     private RestTemplate restTemplate;
@@ -20,7 +21,7 @@ public class RandomStringServiceTest {
     private RandomStringRepository repository;
 
     @InjectMocks
-    private RandomStringService randomStringService;
+    private RandomStringServiceImpl randomStringServiceImpl;
 
     @BeforeEach
     void setUp() {
@@ -31,7 +32,7 @@ public class RandomStringServiceTest {
     void getRandomString_ReturnsRandomString() {
         when(repository.getRandomString()).thenReturn("string-teste");
 
-        String result = randomStringService.getRandomString();
+        String result = randomStringServiceImpl.getRandomString();
         assertNotNull(result);
     }
 }

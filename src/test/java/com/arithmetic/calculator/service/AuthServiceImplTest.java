@@ -8,6 +8,7 @@ import com.arithmetic.calculator.dto.request.UserRequestDTO;
 import com.arithmetic.calculator.model.User;
 import com.arithmetic.calculator.repository.UserRepository;
 import com.arithmetic.calculator.security.JwtUtil;
+import com.arithmetic.calculator.service.impl.AuthServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -15,7 +16,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-public class AuthServiceTest {
+public class AuthServiceImplTest {
 
     @Mock
     private UserRepository userRepository;
@@ -27,7 +28,7 @@ public class AuthServiceTest {
     private JwtUtil jwtUtil;
 
     @InjectMocks
-    private AuthService authService;
+    private AuthServiceImpl authServiceImpl;
 
     @BeforeEach
     void setUp() {
@@ -43,7 +44,7 @@ public class AuthServiceTest {
         when(userRepository.findByUsername(anyString())).thenReturn(null);
 
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-            authService.authenticate(userRequest);
+            authServiceImpl.authenticate(userRequest);
         });
 
         assertEquals("Usuário não encontrado", exception.getMessage());
@@ -63,7 +64,7 @@ public class AuthServiceTest {
         when(passwordEncoder.matches(anyString(), anyString())).thenReturn(false);
 
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-            authService.authenticate(userRequest);
+            authServiceImpl.authenticate(userRequest);
         });
 
         assertEquals("Senha inválida", exception.getMessage());
@@ -83,7 +84,7 @@ public class AuthServiceTest {
         when(passwordEncoder.matches(anyString(), anyString())).thenReturn(true);
         when(jwtUtil.generateToken(anyString())).thenReturn("mockedToken");
 
-        String token = authService.authenticate(userRequest);
+        String token = authServiceImpl.authenticate(userRequest);
 
         assertEquals("mockedToken", token);
     }

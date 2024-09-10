@@ -7,7 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.arithmetic.calculator.dto.response.OperationDTO;
 import com.arithmetic.calculator.dto.response.RecordDTO;
 import com.arithmetic.calculator.dto.response.UserDTO;
-import com.arithmetic.calculator.service.CalculationService;
+import com.arithmetic.calculator.service.impl.CalculationServiceImpl;
 import config.TestSecurityConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,7 +34,7 @@ public class OperationControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private CalculationService calculationService;
+    private CalculationServiceImpl calculationServiceImpl;
 
     @BeforeEach
     public void setUp() {
@@ -48,7 +48,7 @@ public class OperationControllerTest {
         double n2 = 2.0;
         String expectedResult = "3.0";
 
-        given(calculationService.performOperation(type, n1, n2)).willReturn(expectedResult);
+        given(calculationServiceImpl.performOperation(type, n1, n2)).willReturn(expectedResult);
 
         mockMvc.perform(post("/api/v1/operations/{type}", type)
                         .param("number1", String.valueOf(n1))
@@ -63,7 +63,7 @@ public class OperationControllerTest {
         Pageable pageable = PageRequest.of(0, 3);
         Page<RecordDTO> mockPage = new PageImpl<>(Collections.singletonList(new RecordDTO(1l, new OperationDTO(), new UserDTO(), Double.valueOf(1), Double.valueOf(2), "teste", LocalDateTime.now())), pageable, 1);
 
-        given(calculationService.getAllOperations(pageable)).willReturn(mockPage);
+        given(calculationServiceImpl.getAllOperations(pageable)).willReturn(mockPage);
 
         mockMvc.perform(get("/api/v1/operations")
                         .param("page", "0")

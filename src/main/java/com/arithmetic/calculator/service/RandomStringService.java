@@ -1,16 +1,7 @@
 package com.arithmetic.calculator.service;
 
-import com.arithmetic.calculator.repository.RandomStringRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+public interface RandomStringService {
 
-@Service
-public class RandomStringService {
+    String getRandomString();
 
-    @Autowired
-    private RandomStringRepository repository;
-
-    public String getRandomString() {
-        return repository.getRandomString();
-    }
 }
