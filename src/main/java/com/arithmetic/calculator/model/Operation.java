@@ -6,10 +6,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "operations")
 @Getter
+@Setter
 public class Operation {
     @Id
     private Long id;

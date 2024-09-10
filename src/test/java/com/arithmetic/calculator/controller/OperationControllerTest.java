@@ -1,10 +1,9 @@
-package com.arithmetic.calculator;
+package com.arithmetic.calculator.controller;
 
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.arithmetic.calculator.controller.OperationController;
 import com.arithmetic.calculator.dto.response.OperationDTO;
 import com.arithmetic.calculator.dto.response.RecordDTO;
 import com.arithmetic.calculator.dto.response.UserDTO;
@@ -12,7 +11,6 @@ import com.arithmetic.calculator.service.CalculationService;
 import config.TestSecurityConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
