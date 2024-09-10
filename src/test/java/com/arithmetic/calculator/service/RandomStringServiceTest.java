@@ -3,6 +3,7 @@ package com.arithmetic.calculator.service;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import com.arithmetic.calculator.repository.RandomStringRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -15,6 +16,9 @@ public class RandomStringServiceTest {
     @Mock
     private RestTemplate restTemplate;
 
+    @Mock
+    private RandomStringRepository repository;
+
     @InjectMocks
     private RandomStringService randomStringService;
 
@@ -25,6 +29,7 @@ public class RandomStringServiceTest {
 
     @Test
     void getRandomString_ReturnsRandomString() {
+        when(repository.getRandomString()).thenReturn("string-teste");
 
         String result = randomStringService.getRandomString();
         assertNotNull(result);
