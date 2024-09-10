@@ -8,6 +8,10 @@ This project is a REST API for an arithmetic calculator developed using Spring B
 
 ![Untitled-2024-09-04-2355](https://github.com/user-attachments/assets/95826135-96d0-4c43-8ff5-49bfed483d6e)
 
+## MER (Entity-Relationship model)
+
+![Entity Relationship Diagram](https://github.com/user-attachments/assets/3e2668df-1e1d-4d47-a13a-8b2db1a883f8)
+
 ## Prerequisites
 
 - **Java 17**: Ensure you have JDK 17 installed.
