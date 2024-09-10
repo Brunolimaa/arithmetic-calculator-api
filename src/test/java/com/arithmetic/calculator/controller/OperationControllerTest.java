@@ -48,7 +48,7 @@ public class OperationControllerTest {
         double n2 = 2.0;
         String expectedResult = "3.0";
 
-        given(calculationService.performOperation(1L, type, n1, n2)).willReturn(expectedResult);
+        given(calculationService.performOperation(type, n1, n2)).willReturn(expectedResult);
 
         mockMvc.perform(post("/api/v1/operations/{type}", type)
                         .param("number1", String.valueOf(n1))

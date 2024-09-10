@@ -38,7 +38,7 @@ public class CalculationServiceTest {
     void performOperation_UserNotFound() {
         when(userService.findByUsername(anyString())).thenReturn(null);
 
-        String result = calculationService.performOperation(1L, "add", 1.0, 2.0);
+        String result = calculationService.performOperation("add", 1.0, 2.0);
         assertEquals("User not found", result);
     }
 
@@ -49,7 +49,7 @@ public class CalculationServiceTest {
         when(userService.findByUsername(anyString())).thenReturn(user);
         when(operationService.findByType(anyString())).thenReturn(null);
 
-        String result = calculationService.performOperation(1L, "add", 1.0, 2.0);
+        String result = calculationService.performOperation("add", 1.0, 2.0);
         assertEquals("Operation not found", result);
     }
 
@@ -62,7 +62,7 @@ public class CalculationServiceTest {
         when(userService.findByUsername(anyString())).thenReturn(user);
         when(operationService.findByType(anyString())).thenReturn(operation);
 
-        String result = calculationService.performOperation(1L, "add", 1.0, 2.0);
+        String result = calculationService.performOperation("add", 1.0, 2.0);
         assertEquals("Insufficient balance", result);
     }
 
@@ -75,7 +75,7 @@ public class CalculationServiceTest {
         when(userService.findByUsername(anyString())).thenReturn(user);
         when(operationService.findByType(anyString())).thenReturn(operation);
 
-        String result = calculationService.performOperation(1L, "unknown", 1.0, 2.0);
+        String result = calculationService.performOperation("unknown", 1.0, 2.0);
         assertEquals("Invalid operation", result);
     }
 
@@ -88,7 +88,7 @@ public class CalculationServiceTest {
         when(userService.findByUsername(anyString())).thenReturn(user);
         when(operationService.findByType(anyString())).thenReturn(operation);
 
-        String result = calculationService.performOperation(1L, "addition", 1.0, 2.0);
+        String result = calculationService.performOperation( "addition", 1.0, 2.0);
         assertEquals("3.0", result);
 
         verify(recordService).saveRecord(any(Record.class));

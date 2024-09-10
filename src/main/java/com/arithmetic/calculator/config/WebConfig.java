@@ -19,7 +19,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://arithmetic-calculator-app-bucket.s3-website.eu-north-1.amazonaws.com")
+                .allowedOrigins("http://arithmetic-calculator-app-bucket.s3-website.eu-north-1.amazonaws.com", "http://localhost:4200")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);

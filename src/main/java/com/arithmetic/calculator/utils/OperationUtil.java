@@ -5,7 +5,7 @@ import java.util.Random;
 public class OperationUtil {
 
 
-    public static Double getResultFromOperation(String operationType, double n1, double n2) {
+    public static String getResultFromOperation(String operationType, double n1, double n2) {
         double result;
         switch (operationType) {
             case "addition":
@@ -23,13 +23,10 @@ public class OperationUtil {
             case "square_root":
                 result = Math.sqrt(n1);
                 break;
-            case "random_string":
-                result = new Random().nextInt();
-                break;
             default:
                 return null;
         }
-        return result;
+        return String.valueOf(result);
     }
 
 }

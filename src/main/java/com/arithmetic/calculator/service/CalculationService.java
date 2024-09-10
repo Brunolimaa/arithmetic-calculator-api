@@ -21,7 +21,10 @@ public class CalculationService {
     @Autowired
     private RecordService recordService;
 
-    public String performOperation(Long userId, String operationType, double n1, double n2) {
+    @Autowired
+    private RandomStringService randomStringService;
+
+    public String performOperation(String operationType, double n1, double n2) {
         User user = userService.findByUsername("test@example.com"); // For simplicity, assuming a single user
         if (user == null) return "User not found";
 
@@ -30,15 +33,20 @@ public class CalculationService {
 
         double cost = operation.getCost();
         if (user.getBalance() < cost) return "Insufficient balance";
+        String result = "";
+        if(operationType.equals("random_string")) {
+            result = randomStringService.getRandomString();
+        } else {
+            result = OperationUtil.getResultFromOperation(operationType, n1, n2);
+        }
 
-        Double result = OperationUtil.getResultFromOperation(operationType, n1, n2);
         if (result == null) return "Invalid operation";
 
         // Update user balance and save record
         user.setBalance(user.getBalance() - cost);
-        recordService.saveRecord(new Record(operation, user, cost, user.getBalance(), String.valueOf(result)));
+        recordService.saveRecord(new Record(operation, user, cost, user.getBalance(), result));
 
-        return String.valueOf(result);
+        return result;
     }
 
     public Page<RecordDTO> getAllOperations(Pageable pageable) {

@@ -19,7 +19,7 @@ public class OperationController {
     public ResponseEntity<String> performOperation(@PathVariable("type") String type,
                                                   @RequestParam("number1") double n1,
                                                   @RequestParam("number2") double n2) {
-        return ResponseEntity.ok(calculationService.performOperation(1L, type, n1, n2));
+        return ResponseEntity.ok(calculationService.performOperation(type, n1, n2));
     }
 
     @GetMapping
